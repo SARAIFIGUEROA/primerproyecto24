@@ -1,7 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { Inicio1Component } from './modules/inicio/pages/inicio1/inicio1.component';
 
-const routes: Routes = [];
+//RUTA INICIAL PRINCIPAL
+
+const routes: Routes = [
+  {
+    path:"",component: Inicio1Component
+  },
+  {
+    path: "",loadChildren:()=>import('./modules/inicio/inicio.module').then(m=>m.InicioModule)
+  },
+];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
