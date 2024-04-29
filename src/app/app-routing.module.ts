@@ -5,6 +5,7 @@ import { Inicio1Component } from './modules/inicio/pages/inicio1/inicio1.compone
 //RUTA INICIAL PRINCIPAL
 
 const routes: Routes = [
+  
   {
     path:"",component: Inicio1Component
   },
