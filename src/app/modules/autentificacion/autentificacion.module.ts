@@ -6,10 +6,12 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
+import {MatSelectModule} from '@angular/material/select';
 
 import { IniciosesionComponent } from './pages/iniciosesion/iniciosesion.component';
 import { RegistroComponent } from './pages/registro/registro.component';
-
+//modulo para formularios
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -21,10 +23,15 @@ import { RegistroComponent } from './pages/registro/registro.component';
   imports: [
     CommonModule,
     AutentificacionRoutingModule,
+    // componentes de material
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatSelectModule,
+    //angular
+    FormsModule,
+
   ],
 
   exports:[
