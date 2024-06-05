@@ -18,8 +18,10 @@ import {MatCardModule} from '@angular/material/card';
   imports: [
     CommonModule,
     InicioRoutingModule,
+
     MatButtonModule,
     MatCardModule,
+
   ]
 })
 export class InicioModule { }

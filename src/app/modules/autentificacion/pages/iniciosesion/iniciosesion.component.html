@@ -1,1 +1,28 @@
 <p>iniciosesion works!</p>
+<!--INGRESAR EMAIL-->
+<div class="container">
+    <div class="row">
+        <h1>Inicia Sesión</h1>
+
+        <i class="material-icons" style="font-size: 200px;">person</i>
+        
+        <!-- Email -->
+        <mat-form-field appearance="fill">
+            <mat-label>Ingresar email:</mat-label>
+            <input [(ngModel)]="Insesion.email" matInput placeholder="Ej: usuario24@gmail.com" required >
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
+
+        <!-- Contraseña-->
+        <mat-form-field>
+            <mat-label>Ingresar contraseña:</mat-label>
+            <input [(ngModel)]="Insesion.password" matInput [type]="hide ? 'password' : 'text'" required>
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+
+        <!-- Botón-->
+        <button class="botoon" mat-raised-button color="primary" (click)="iniciarsesion()">Iniciar Sesión</button>
+    </div>
+</div>

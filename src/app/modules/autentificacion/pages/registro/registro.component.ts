@@ -11,36 +11,51 @@ export class RegistroComponent {
   //input de contraseña
   hide = true;
   //registro- importamos interfaz de usuario  => inicializamos
-  usuarios: Usuario={
-    uid:'',
-    nombre:'',
-    apellido:'',
+  usuarios: Usuario = {
+    uid: '',
+    nombre: '',
+    apellido: '',
     email: '',
-    rol:'',
-    password:'',
+    rol: '',
+    password: '',
   }
   //Un arreglo de tipo usuario, significa que solo puede resibir valores que esten declarados en la intrerfaz usuario y de tipo array
-  coleccionUsuarios: Usuario[]=[]
+  coleccionUsuarios: Usuario[] = []
 
-//funcion para el regustro de nyevos usuarios
-registrar(){
-//constsnte credenciales va a resguardar la informacion que ingrese el usuario
-const credenciales ={
-  uid:this.usuarios.uid,
-  nombre:this.usuarios.nombre,
-  apellido:this.usuarios.apellido,
-  Email:this.usuarios.email,
-  rol:this.usuarios.rol,
-  password:this.usuarios.password,
-}
+  //funcion para el regustro de nyevos usuarios
+  registrar() {
+    //constsnte credenciales va a resguardar la informacion que ingrese el usuario
+    const credenciales = {
+      uid: this.usuarios.uid,
+      nombre: this.usuarios.nombre,
+      apellido: this.usuarios.apellido,
+      email: this.usuarios.email,
+      rol: this.usuarios.rol,
+      password: this.usuarios.password,
+    }
 
-//enviamos la informacion como uvo objeto a la coleccion
+    //enviamos la informacion como uvo objeto a la coleccion
+    this.coleccionUsuarios.push(credenciales);
+    //llamamos la funcion para ejecutarla
+    this.limpiarinputs();
+    //mostramos credenciales por consola
+    console.log(credenciales);
+    console.log(this.coleccionUsuarios);
+  }
 
-this.coleccionUsuarios.push(credenciales)
-//mostramos credenciales por consola
-console.log(credenciales);
-console.log(this.coleccionUsuarios);
-}
+  //funcion para vaciar inputs
+  limpiarinputs() {
+    //en constante input llamamos atributos y los inicializamos
+    const input = {
+      uid: this.usuarios.uid='',
+      nombre: this.usuarios.nombre='',
+      apellido: this.usuarios.apellido='',
+      email: this.usuarios.email='',
+      rol: this.usuarios.rol='',
+      password: this.usuarios.password='',
+
+    }
+  }
 }
 
 
