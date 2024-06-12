@@ -5,6 +5,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
   providedIn: 'root'
 
 })
+
 export class AuthService {
 
 
@@ -26,7 +27,7 @@ return this.auth.signOut();
   }
   // funcion para tomar el uid
 
-  tomaruid(){
+  tomar_uid(){
 
   }
 }
