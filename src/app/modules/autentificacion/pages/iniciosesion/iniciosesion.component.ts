@@ -72,8 +72,8 @@ export class IniciosesionComponent {
        rol: this.Insesion.rol,
        password: this.Insesion.password,*/
     const credenciales = {
-      email: this.usuarios.email,
-      password: this.usuarios.password,
+      email: this.Insesion.email,
+      password: this.Insesion.password,
     }
     const res = await this.servicioAuth.iniciarsesion(credenciales.email, credenciales.password)
       .then(res => {
@@ -82,7 +82,7 @@ export class IniciosesionComponent {
       })
       .catch(err => {
         alert('Hubo un problema al iniciar sesion' + err);
-        this.limpiarinputs();
+        this.limpiarInputs();
       })
   }
   /* for (let i = 0; i < this.colleccioniniciolocal.length; i++) {
@@ -97,11 +97,7 @@ export class IniciosesionComponent {
        break;
      }
    }*/
-
-}
-
-limpiarinputs() {
-  //en constante input llamamos atributos y los inicializamos
+  /*en constante input llamamos atributos y los inicializamos
   const inputs = {
     uid: this.Insesion.uid = '',
     nombre: this.Insesion.nombre = '',
@@ -110,7 +106,11 @@ limpiarinputs() {
     rol: this.Insesion.rol = '',
     password: this.Insesion.password = '',
   }
+}*/
+limpiarInputs(){
+const inputs = {
+  email: this.Insesion.email = '',
+  password: this.Insesion.password = ''
 }
-
-
-
+}
+}

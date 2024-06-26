@@ -1,4 +1,4 @@
-<p>registro works!</p>
+
 <div class="container">
     <div class="row">
         <h1>Registrate</h1>
@@ -9,7 +9,7 @@
             <!--ngmodel=> directiva utilizada para formularios-->
             <input [(ngModel)]="usuarios.nombre" matInput placeholder="Ej: Pepe">
             <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-            <mat-hint>Hint</mat-hint>
+            
         </mat-form-field>
         
         <!--Apellido-->
@@ -17,14 +17,14 @@
             <mat-label>Ingrese su apellido</mat-label>
             <input [(ngModel)]="usuarios.apellido" matInput placeholder="Ej: perez">
             <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-            <mat-hint>Hint</mat-hint>
+            
         </mat-form-field>
 <!--Email del usuario-->
         <mat-form-field appearance="fill">
             <mat-label>Ingrese Email</mat-label>
             <input [(ngModel)]="usuarios.email" matInput placeholder="Ej: Pepe@gmail.com">
             <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-            <mat-hint>Hint</mat-hint>
+            
         </mat-form-field>
 
         <!--Rol del usuario-->

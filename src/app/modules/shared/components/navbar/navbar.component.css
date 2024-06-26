@@ -1,4 +1,30 @@
 .example-spacer {
-    flex: 1 1 auto;
+  flex: 1 1 auto;
+}
+
+/*este mediaqueri va a corresponder a pantallas mas pequeñas como celulares, ipads*/
+@media(min-with:300px)and (max-with:700px) {
+  mat-toolbar {
+    background-color: blue;
   }
-  
+
+  #menuProducto {
+    display: none;
+  }
+
+  #menuInicio {
+    display: none;
+  }
+}
+
+/*corresponde a pantallas mas grandes*/
+@media(min-with:700px) {
+  mat-toolbar {
+    background-color: cadetblue;
+  }
+
+  #menuSecciones {
+    /**/
+    display: none;
+  }
+}

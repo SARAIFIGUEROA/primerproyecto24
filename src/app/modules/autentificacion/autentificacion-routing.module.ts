@@ -1,4 +1,4 @@
-import { Component, NgModule } from '@angular/core';
+import {NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { IniciosesionComponent } from './pages/iniciosesion/iniciosesion.component';
 import { RegistroComponent } from './pages/registro/registro.component';
