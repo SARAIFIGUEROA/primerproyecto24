@@ -8,6 +8,9 @@ import { FirestoreService } from 'src/app/modules/shared/firestore.service';
 import { Router } from '@angular/router';
 import { throwToolbarMixedModesError } from '@angular/material/toolbar';
 
+//crypto
+import * as CryptoJS from 'crypto-js';
+
 
 @Component({
   selector: 'app-registro',
@@ -66,6 +69,9 @@ export class RegistroComponent {
       const uid= await this.servicioAuth.tomaruid();
 //se le asigna al atributo de la interfaz 
 this.usuarios.uid=uid;
+//ES UN ALGORITMO de hash seguro que toma una entrada (EN ESTE CASO LA CONTRASEÑA) Y PRODUCE UNA CADENA DE CARACTERES HEXADECIMNAL QUE VA A REPRESENTAR A SU HASH
+this.usuarios.password = CryptoJS.SHA256(this.usuarios.password).toString();
+//el to string va a convertir el resultado en la cadena de caracteres leghle
 this.guardarusuario();
 
     /*

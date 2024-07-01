@@ -5,6 +5,9 @@ import { AuthService } from '../../services/auth.service';
 import { FirestoreService } from 'src/app/modules/shared/firestore.service';
 import { Router } from '@angular/router';
 
+//crypto
+import * as CryptoJS from 'crypto-js';
+
 @Component({
   selector: 'app-iniciosesion',
   templateUrl: './iniciosesion.component.html',
@@ -75,15 +78,39 @@ export class IniciosesionComponent {
       email: this.Insesion.email,
       password: this.Insesion.password,
     }
-    const res = await this.servicioAuth.iniciarsesion(credenciales.email, credenciales.password)
-      .then(res => {
-        alert('se pudo ingresar con exito!')
-        this.servicioRutas.navigate(['./inicio']);
-      })
-      .catch(err => {
-        alert('Hubo un problema al iniciar sesion' + err);
+
+    try {
+      //obtenemos usuario de la bD
+      const usuariobd = await this.servicioAuth.obtenerusuario(credenciales.email)
+
+      if (!usuariobd || usuariobd.empty) {
+        alert("Correo electronico no registrado");
         this.limpiarInputs();
-      })
+        return;
+      }
+      const usuarioDoc = usuariobd.docs[0];
+      const usuariodata=usuarioDoc.data() as Usuario
+      const hashedPassword = CryptoJS.SHA256(credenciales.password).toString();
+
+
+      if (hashedPassword !== usuariodata.password){
+        alert("contraseña incorrecta");
+        this.Insesion.password='';
+        return;
+      }
+    
+  const res = await this.servicioAuth.iniciarsesion(credenciales.email, credenciales.password)
+    .then(res => {
+      alert('se pudo ingresar con exito!')
+      this.servicioRutas.navigate(['./inicio']);
+    })
+    .catch(err => {
+      alert('Hubo un problema al iniciar sesion' + err);
+      this.limpiarInputs();
+    })}
+    catch(error){
+      this.limpiarInputs();
+    }
   }
   /* for (let i = 0; i < this.colleccioniniciolocal.length; i++) {
      const usuariolocal = this.colleccioniniciolocal[i];
@@ -107,10 +134,10 @@ export class IniciosesionComponent {
     password: this.Insesion.password = '',
   }
 }*/
-limpiarInputs(){
-const inputs = {
-  email: this.Insesion.email = '',
-  password: this.Insesion.password = ''
-}
-}
+  limpiarInputs() {
+    const inputs = {
+      email: this.Insesion.email = '',
+      password: this.Insesion.password = ''
+    }
+  }
 }

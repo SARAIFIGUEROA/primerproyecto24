@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 @Injectable({
   providedIn: 'root'
 
 })
 export class AuthService {
-  constructor(public auth: AngularFireAuth) { }
+  constructor(
+   private auth: AngularFireAuth,
+    private serviciofirestore: AngularFirestore,) { }
+
   //funcion para registro
   registro(email: string, password: string) {
     return this.auth.createUserWithEmailAndPassword(email, password);
@@ -31,5 +34,9 @@ export class AuthService {
     } else {
       return user.uid;
     }
+  }
+//retornamos del servicio firestore la cllecccion de usuarios, buscamos una refereencia en los email reguistrados y los comprarmaos con los ingrese el usuario al iniciar sesion y los obtiene con el .get, lo vuelve una promesa => da un resultado resuelto o rechazado
+  obtenerusuario(email: string) {
+    return this.serviciofirestore.collection('usuarios', ref => ref.where('email', '==', email)).get().toPromise()
   }
 }
