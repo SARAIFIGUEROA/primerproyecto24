@@ -33,7 +33,7 @@ export class CardComponent {
         nombre: "pantalon",
         tipo: "babucha",
         valor: 30000,
-        imagen: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fcardon.com.ar%2Fshop%2Fhombre%2Fpantalon-cargo-marcos-negro%2F&psig=AOvVaw0zdilSkxDPAqCelpc7sq-M&ust=1719919674210000&source=images&cd=vfe&opi=89978449&ved=0CA8QjRxqFwoTCOCQ5qPehYcDFQAAAAAdAAAAABAE",
+        imagen: "https://img.freepik.com/foto-gratis/pantalones_1203-8094.jpg",
         alt: "imagen",
       }
 

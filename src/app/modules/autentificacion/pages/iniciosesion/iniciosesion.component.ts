@@ -89,29 +89,35 @@ export class IniciosesionComponent {
         return;
       }
       const usuarioDoc = usuariobd.docs[0];
-      const usuariodata=usuarioDoc.data() as Usuario
+      //extrae los datos del documentoen forma de objetoy se especifica que va a ser del tipo "usuaro" (se refiere a la interfaz Usuario)
+      const usuariodata = usuarioDoc.data() as Usuario
+
+      //encripta la contraseña que el usuario envia meidante "iniciar sesion"
       const hashedPassword = CryptoJS.SHA256(credenciales.password).toString();
 
-
-      if (hashedPassword !== usuariodata.password){
+      //condicional que compara la contrasewña que acabamos de encriptar conn la que recibimos de "usuariodata"
+      if (hashedPassword !== usuariodata.password) {
         alert("contraseña incorrecta");
-        this.Insesion.password='';
+        this.Insesion.password = '';
         return;
       }
-    
-  const res = await this.servicioAuth.iniciarsesion(credenciales.email, credenciales.password)
-    .then(res => {
-      alert('se pudo ingresar con exito!')
-      this.servicioRutas.navigate(['./inicio']);
-    })
-    .catch(err => {
-      alert('Hubo un problema al iniciar sesion' + err);
-      this.limpiarInputs();
-    })}
-    catch(error){
+
+      const res = await this.servicioAuth.iniciarsesion(credenciales.email, credenciales.password)
+        .then(res => {
+          alert('se pudo ingresar con exito!')
+          this.servicioRutas.navigate(['./inicio']);
+        })
+        .catch(err => {
+          alert('Hubo un problema al iniciar sesion' + err);
+          this.limpiarInputs();
+        })
+    }
+    catch (error) {
       this.limpiarInputs();
     }
   }
+
+  
   /* for (let i = 0; i < this.colleccioniniciolocal.length; i++) {
      const usuariolocal = this.colleccioniniciolocal[i];
      if (usuariolocal.nombre === credenciales.nombre && usuariolocal.apellido === credenciales.apellido && usuariolocal.email === credenciales.email &&
