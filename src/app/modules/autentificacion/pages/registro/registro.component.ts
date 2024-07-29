@@ -10,7 +10,8 @@ import { throwToolbarMixedModesError } from '@angular/material/toolbar';
 
 //crypto
 import * as CryptoJS from 'crypto-js';
-
+//sweet
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registro',
@@ -54,16 +55,24 @@ export class RegistroComponent {
       email: this.usuarios.email,
       password: this.usuarios.password
     }
-    const respuesta = this.servicioAuth.registro(credenciales.email, credenciales.password)
+    const res = this.servicioAuth.registro(credenciales.email, credenciales.password)
       //then es una promesa que devuelve el mismo valor 
-      .then(respuesta => [
-        alert("Se pudo registrar con exito :)"),
+      .then(res => {
+        Swal.fire({
+          title: "Felicidades!",
+          text: "Se pudo registrar con exito!",
+          icon: "success"
+        });
         //el metodo navigate nos direcciona a otra vista
         this.servicioRutas.navigate(['/incio'])
-      ])
+  })
       //encapsula un error. captura una falla y la vuelve error cuando la promesa salg mal
       .catch(error => {
-        ("hubo un error al registrar un nuevo usuario : (\n" + error)
+        Swal.fire({
+          title: "Error",
+          text: "Hubo un error al registrar el usuario! \n" + error,
+          icon: "error"
+        });
       });
 //constante uid captura el identificado de la base de datos
       const uid= await this.servicioAuth.tomaruid();

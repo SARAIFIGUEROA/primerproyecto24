@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
 
 //crypto
 import * as CryptoJS from 'crypto-js';
+//iimportamos sweet alert
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-iniciosesion',
@@ -84,7 +86,11 @@ export class IniciosesionComponent {
       const usuariobd = await this.servicioAuth.obtenerusuario(credenciales.email)
 
       if (!usuariobd || usuariobd.empty) {
-        alert("Correo electronico no registrado");
+        Swal.fire({
+          title: "Hubo un error!",
+          text: "No se pudo iniciar sesion!",
+          icon: "error"
+        });
         this.limpiarInputs();
         return;
       }
@@ -97,18 +103,30 @@ export class IniciosesionComponent {
 
       //condicional que compara la contrasewña que acabamos de encriptar conn la que recibimos de "usuariodata"
       if (hashedPassword !== usuariodata.password) {
-        alert("contraseña incorrecta");
+        Swal.fire({
+          title: "Bien!",
+          text: "Se inicio con exito",
+          icon: "success"
+        });
         this.Insesion.password = '';
         return;
       }
 
       const res = await this.servicioAuth.iniciarsesion(credenciales.email, credenciales.password)
         .then(res => {
-          alert('se pudo ingresar con exito!')
+          Swal.fire({
+            title: "Bien!",
+            text: "Se inicio sesion con exito!",
+            icon: "success"
+          });
           this.servicioRutas.navigate(['./inicio']);
         })
         .catch(err => {
-          alert('Hubo un problema al iniciar sesion' + err);
+          Swal.fire({
+            title: "Error!",
+            text: "No se pudo iniciar sesion",
+            icon: "error"
+          });
           this.limpiarInputs();
         })
     }

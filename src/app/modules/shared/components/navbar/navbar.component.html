@@ -31,7 +31,7 @@
 <button mat-button [matMenuTriggerFor]="usuario"><mat-icon>person</mat-icon></button>
 <mat-menu #usuario="matMenu">
   <button mat-menu-item (click)="ingresar()" *ngIf="logueado" routerLink="/registro">Registrarse</button>
-  <button mat-menu-item (click)="ingresar()" *ngIf="deslogueado" routerLink="/iniciodesesion">Iniciar sesión</button> 
+  <button mat-menu-item (click)="ingresar()" *ngIf="logueado" routerLink="/iniciodesesion">Iniciar sesión</button> 
   <button mat-menu-item (click)="cerrarsesion()" *ngIf="deslogueado">Cerrar sesion</button>
 </mat-menu>
 
