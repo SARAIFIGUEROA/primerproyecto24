@@ -1,7 +1,8 @@
 
 
 
-export interface Buzo {
+export interface Buzo
+ {
     id: string;
     nombre: string;
     tipo: string;
