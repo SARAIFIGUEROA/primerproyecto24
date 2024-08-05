@@ -29,7 +29,6 @@ import { MatIconModule } from '@angular/material/icon';
     TableComponent,
     FormsModule,
     ReactiveFormsModule,
-
     MatIconModule,]
 })
 export class AdminModule { }

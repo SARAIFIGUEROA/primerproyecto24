@@ -35,9 +35,77 @@
         </button>
        </td>
        
-        </tr>
-
-
+    </tr>
 
     </tbody>
 </table>
+
+  <!-- Boton agregar nuevos productos -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#AgregarProducto">
+    Agregar nuevo producto
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="AgregarProducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Ingrese un nuevo producto</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <!--cuerpo modal
+        el form group se vincula con el formulario que definidmos desde el ts por eso ponemos(producto) los formcontrolname estan vinculados con el formularo del ts tambien-->
+         
+        <div  [formGroup]="producto" class="modal-body">
+            <div class="mb-3">
+                <label class="form-label">Ingrese el nombre del producto
+                    <input class="form-label" type="text" formControlName="nombre" placeholder="Ej: Campera de nieve roja">
+                </label>
+            </div> 
+<!--imagen-->
+            <div class="mb-3">
+              <label class="form-label">Suba url de imagen 
+                  <input class="form-label" type="text" formControlName="imagen" placeholder="adjunte el link de la imagen aqui">
+              </label>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Suba Atl (la descripcion de imagen) 
+                <input class="form-label" type="text" formControlName="alt" placeholder="En caso de que no cargue la imagen saldra el texto que escriba aquí">
+            </label>
+        </div>
+            
+            <div class="mb-3">
+          <label class="form-label">Ingrese precio del producto
+              <input class="form-label" type="number" formControlName="precio" placeholder="Ej: 1000">
+          </label>
+      </div>
+
+          <div class="mb-3">
+            <label class="form-label">Ingrese descripcion del producto
+                <input class="form-label" type="text" formControlName="descripcion" placeholder="Ej: Campera de nieve roja resistente a .....">
+            </label>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Selecconar la categoria del producto
+              <select class="form-label" type="text" formControlName="categoria" placeholder="Ej: ...">
+             <option selected>elija una opción</option>
+             <!--ACA SE PONEN LAS CATEGORIAS QUE HAY EN EL MODULO PRODUTCO--> </select>
+              <option value="remeras">Remeras</option>
+              <option value="buzos">Buzos</option>
+              <option value="producto">General</option>
+             </label>
+      </div>
+
+
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-sucess" (click)="AgregarProducto()" data-bs-dismiss="modal">Guardar</button>
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>

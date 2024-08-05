@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Inicio1Component } from './modules/inicio/pages/inicio1/inicio1.component';
 
-//RUTA INICIAL PRINCIPAL
+//RUTAs INICIALes PRINCIPAL
 
 const routes: Routes = [
   {
