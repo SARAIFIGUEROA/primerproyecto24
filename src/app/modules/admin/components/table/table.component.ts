@@ -30,7 +30,11 @@ export class TableComponent {
   })
 
   constructor(public serviciocrud: CrudService) { }
-  ngOnInit(): void { }
+  ngOnInit(): void {/* 
+    this.serviciocrud.obternerProducto().subscribe(producto => {
+      this.coleccionproductos= producto ;
+    })*/
+  }
 
   async AgregarProducto() {
     if (this.producto.valid) {

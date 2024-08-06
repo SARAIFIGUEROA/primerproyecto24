@@ -3,6 +3,9 @@ import { Injectable } from '@angular/core';
 import { Producto } from 'src/app/models/producto';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { AST } from '@angular/compiler';
+import { Action } from 'rxjs/internal/scheduler/Action';
+import { MapType } from '@angular/compiler';
+
 
 @Injectable({
   providedIn: 'root'
@@ -32,9 +35,19 @@ return new Promise(async(resolve, reject)=> {
     }
 })
 }
-}
 
-//obtener 
+//funcion obtener 
+//accedemos a la collecion productos
+/*snapchanges toma captura del estado de los datos
+pipe tuberias que retornan un nuevo arreglo
+map  "mapas" o recorre esa nueva informacion es un observador, lee, no hacve modificaciones por si solo a menos que se lo pidamos
+a  resguarda la nueva informacion y la envia como un documento */
+/*
+obternerProducto(){
+  return this.productosCollection.snapshotChanges().pipe(map(action=>action.map(a=>a.payload.doc.data())))
+ }
+  */}
+
 
 
 
