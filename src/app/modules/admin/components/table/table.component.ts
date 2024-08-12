@@ -19,6 +19,10 @@ export class TableComponent {
   /*atributos alfanumericos (string) se inicializa con comilla simple
   atributos numericos (number) se iniucializan con 0 ('0')*/
 
+  productoSeleccionado!: Producto; // ! <- tomar valores vacios
+
+  modalvisibleprodcutos: boolean = false;
+
   //definimos formuklarios para los productos 
   producto = new FormGroup({
     nombre: new FormControl('', Validators.required),
@@ -52,17 +56,34 @@ export class TableComponent {
         .then(producto => {
           Swal.fire({
             title: "Felicidades!",
-            text: "Se pudo registrar con exito!",
-            icon: "success"});
-          })
-      
+            text: "Se pudo subir con exito!",
+            icon: "success"
+          });
+        })
+
         .catch(error => {
           Swal.fire({
             title: "Error",
-            text: "Hubo un error al registrar el usuario! \n" + error,
+            text: "Hubo un error al subir producto!  \n" + error,
             icon: "error"
-         });
+          });
         });
-      }
     }
   }
+
+
+  MostrarBorrar(productoSeleccionado: Producto) {
+    this.modalvisibleprodcutos = true;
+    this.productoSeleccionado = productoSeleccionado;
+  }
+
+  eliminarProducto() {/*
+    this.serviciocrud.eliminarProducto(this.productoSeleccionado.idproducto)
+      .then(respuesta) => {
+      alert("se ha podido eliminar con exito"
+)}
+.catch (error => 
+  { alert("ha ocurrido un error al eliminar un producto: \n"+error)
+  })*/
+  }
+}

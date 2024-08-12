@@ -15,6 +15,7 @@ import { AppComponent } from './app.component';
 import { InicioComponent } from './iniciosinuso/inicio.component';
 import { GaleriaComponent } from './galeria/galeria.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AdminModule } from "./modules/admin/admin.module";
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AngularFireModule.initializeApp(enviroment.firebaseConfig),
     AngularFireStorageModule,
     AngularFireAuthModule,
-  ],
+    AdminModule
+],
   providers: [],
   bootstrap: [AppComponent]
 })

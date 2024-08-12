@@ -30,7 +30,7 @@
         </button>
        </td>
        <td>
-        <button id="btn-delete" title="Eliminar" type="button" class="btn btn-outlinr-danger">
+        <button id="btn-delete" title="Eliminar" type="button" class="btn btn-outlinr-danger" data-bs-toggle="modal" data-bs-target="#eliminarProducto" (click)="MostrarBorrar(producto)">
             <mat-icon>delete</mat-icon>
         </button>
        </td>
@@ -92,10 +92,10 @@
           <label class="form-label">Selecconar la categoria del producto
               <select class="form-label" type="text" formControlName="categoria" placeholder="Ej: ...">
              <option selected>elija una opción</option>
-             <!--ACA SE PONEN LAS CATEGORIAS QUE HAY EN EL MODULO PRODUTCO--> </select>
+             <!--ACA SE PONEN LAS CATEGORIAS QUE HAY EN EL MODULO PRODUTCO-->
               <option value="remeras">Remeras</option>
               <option value="buzos">Buzos</option>
-              <option value="producto">General</option>
+              <option value="producto">General</option> </select>
              </label>
       </div>
 
@@ -109,3 +109,23 @@
       </div>
     </div>
   </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="eliminarProducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
