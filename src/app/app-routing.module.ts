@@ -15,7 +15,14 @@ const routes: Routes = [
     path:"", loadChildren:()=>import('./modules/producto/producto.module').then(m=>m.ProductoModule)
   },
   {path:"", loadChildren:()=>import('./modules/autentificacion/autentificacion.module').then(m=>m.AutentificacionModule)},
-  {path:"", loadChildren:()=>import('./modules/admin/admin.module').then(m=>m.AdminModule)}
+  
+  {
+    path: "", loadChildren:()=> import('./modules/shared/shared.module').then(m => m.SharedModule)
+  },
+  
+  {path:"", loadChildren:()=>import('./modules/admin/admin.module').then(m=>m.AdminModule)
+
+  },
 ];
  
 

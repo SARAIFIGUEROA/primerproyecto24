@@ -9,13 +9,13 @@ import { AngularFireModule } from '@angular/fire/compat'; // trabaja con las col
 import { AngularFireAuthModule } from '@angular/fire/compat/auth'; // trabaja con la autentificacion
 import {AngularFireStorageModule } from '@angular/fire/compat/storage' // trabaja con imagenes y archivos
 
-
+//modulos
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InicioComponent } from './iniciosinuso/inicio.component';
 import { GaleriaComponent } from './galeria/galeria.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AdminModule } from "./modules/admin/admin.module";
+
 
 @NgModule({
   declarations: [
@@ -28,12 +28,11 @@ import { AdminModule } from "./modules/admin/admin.module";
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
-    //firebase vinc
-    //
+    //firebase vinculacion para inicializar la bd
     AngularFireModule.initializeApp(enviroment.firebaseConfig),
     AngularFireStorageModule,
     AngularFireAuthModule,
-    AdminModule
+    
 ],
   providers: [],
   bootstrap: [AppComponent]

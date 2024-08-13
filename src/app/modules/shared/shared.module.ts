@@ -28,7 +28,6 @@ import { MatMenuModule } from '@angular/material/menu';
     MatIconModule,
     MatButtonModule,
     MatToolbarModule,
-    AppRoutingModule,
     MatMenuModule,
   ]
 })

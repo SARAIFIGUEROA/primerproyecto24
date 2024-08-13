@@ -14,7 +14,7 @@ import { MatIconModule } from '@angular/material/icon';
 @NgModule({
   declarations: [
     AdminComponent,
-    TableComponent
+    TableComponent,
   ],
   imports: [
     CommonModule,

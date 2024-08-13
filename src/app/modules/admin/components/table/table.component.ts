@@ -1,9 +1,7 @@
-import { Component, numberAttribute } from '@angular/core';
+import { Component} from '@angular/core';
 import { Producto } from 'src/app/models/producto';
 import { CrudService } from '../../services/crud.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { TENANT_ID } from '@angular/fire/compat/auth';
-import { throwToolbarMixedModesError } from '@angular/material/toolbar';
 
 //sweet
 import Swal from 'sweetalert2';
@@ -21,7 +19,7 @@ export class TableComponent {
 
   productoSeleccionado!: Producto; // ! <- tomar valores vacios
 
-  modalvisibleprodcutos: boolean = false;
+  modalvisibleproductos: boolean = false;
 
   //definimos formuklarios para los productos 
   producto = new FormGroup({
@@ -34,15 +32,17 @@ export class TableComponent {
   })
 
   constructor(public serviciocrud: CrudService) { }
-  ngOnInit(): void {/* 
-    this.serviciocrud.obternerProducto().subscribe(producto => {
-      this.coleccionproductos= producto ;
-    })*/
+
+  ngOnInit(): void { 
+    this.serviciocrud.obtenerProducto().subscribe(producto => {
+      this.coleccionproductos = producto;
+    })
   }
 
   async AgregarProducto() {
     if (this.producto.valid) {
       let nuevoproducto: Producto = {
+        //comilla simple vacia por que el id se lo asigna la bd
         idproducto: '',
         nombre: this.producto.value.nombre!,
         precio: this.producto.value.precio!,
@@ -71,19 +71,21 @@ export class TableComponent {
     }
   }
 
+//vinculamos con el modal
 
   MostrarBorrar(productoSeleccionado: Producto) {
-    this.modalvisibleprodcutos = true;
+    this.modalvisibleproductos = true;
     this.productoSeleccionado = productoSeleccionado;
   }
 
-  eliminarProducto() {/*
+  
+  borrarProducto(){
     this.serviciocrud.eliminarProducto(this.productoSeleccionado.idproducto)
-      .then(respuesta) => {
-      alert("se ha podido eliminar con exito"
-)}
-.catch (error => 
-  { alert("ha ocurrido un error al eliminar un producto: \n"+error)
-  })*/
+    .then(respuesta => {
+      alert("Se ha podido eliminar con éxito.");
+    })
+    .catch(error => {
+      alert("Ha ocurrido un error al eliminar un producto: \n"+error);
+    })
   }
 }
