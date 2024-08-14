@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //importamos shared
 import { SharedModule } from './modules/shared/shared.module';
 
@@ -13,16 +14,13 @@ import {AngularFireStorageModule } from '@angular/fire/compat/storage' // trabaj
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InicioComponent } from './iniciosinuso/inicio.component';
-import { GaleriaComponent } from './galeria/galeria.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    InicioComponent,
-    GaleriaComponent
-  ],
+    InicioComponent,],
+    
   imports: [
     BrowserModule,
     AppRoutingModule,
