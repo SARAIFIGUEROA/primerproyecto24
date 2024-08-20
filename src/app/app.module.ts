@@ -13,13 +13,13 @@ import {AngularFireStorageModule } from '@angular/fire/compat/storage' // trabaj
 //modulos
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { InicioComponent } from './iniciosinuso/inicio.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    InicioComponent,],
+    ],
     
   imports: [
     BrowserModule,
@@ -32,6 +32,7 @@ import { InicioComponent } from './iniciosinuso/inicio.component';
     AngularFireAuthModule,
     
 ],
+
   providers: [],
   bootstrap: [AppComponent]
 })

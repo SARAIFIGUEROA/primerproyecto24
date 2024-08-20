@@ -31,19 +31,22 @@ return new Promise(async(resolve, reject)=> {
     }
 })
 }
+
+
 //funcion obtener 
 //accedemos a la collecion productos
 /*snapchanges toma captura del estado de los datos
-pipe tuberias que retornan un nuevo arreglo
+pipe => tuberias que retornan un nuevo arreglo
 map  "mapas" o recorre esa nueva informacion es un observador, lee, no hacve modificaciones por si solo a menos que se lo pidamos
 a  resguarda la nueva informacion y la envia como un documento */
 obtenerProducto(){
   return this.productosCollection.snapshotChanges().pipe(map(action => action.map(a => a.payload.doc.data())))
  }
 
+
 //editar //id para saber cual es el producto que quiero eliminar
 editarProducto(idproducto:string, nuevaData: Producto){
-return this.database.collection('productos').doc(idproducto).update(nuevaData);
+return this.database.collection('producto').doc(idproducto).update(nuevaData);
 }
 
 

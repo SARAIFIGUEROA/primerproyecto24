@@ -26,10 +26,11 @@
 
       <!--acciones-->
       <td>
-        <button id="btn edit" title="Editar" type="button" class="btn btn-outlinr-warning">
+        <button id="btn edit" title="Editar" type="button" class="btn btn-outlinr-warning" data-bs-toggle="modal" data-bs-target="#EditarProducto" (click)="Mostrareditar(producto)">
           <mat-icon>edit</mat-icon>
         </button>
       </td>
+
       <td>
         <button id="btn-delete" title="Eliminar" type="button" class="btn btn-outlinr-danger" data-bs-toggle="modal"
           data-bs-target="#eliminarProducto" (click)="MostrarBorrar(producto)">
@@ -114,6 +115,77 @@
   </div>
 </div>
 
+<!-- Modal para editar produto -->
+<div class="modal fade" id="EditarProducto" *ngFor="let productoEdit of coleccionproductos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Edite el siguiente producto</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <!--cuerpo modal
+        el form group se vincula con el formulario que definidmos desde el ts por eso ponemos(producto) los formcontrolname estan vinculados con el formularo del ts tambien-->
+
+      <div [formGroup]="producto" class="modal-body">
+        <div class="mb-3">
+          <label class="form-label">Ingrese el nombre del producto
+            <input class="form-label" type="text" formControlName="nombre" placeholder="{{productoEdit.nombre}}">
+          </label>
+        </div>
+        <!--imagen-->
+        <div class="mb-3">
+          <label class="form-label">Suba url de imagen
+            <input class="form-label" type="text" formControlName="imagen"
+              placeholder="{{productoEdit.imagen}}">
+          </label>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Suba Atl (la descripcion de imagen)
+            <input class="form-label" type="text" formControlName="alt"
+              placeholder="{{productoEdit.alt}}">
+          </label>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Ingrese precio del producto
+            <input class="form-label" type="number" formControlName="precio" placeholder="{{productoEdit.precio}}">
+          </label>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Ingrese descripcion del producto
+            <input class="form-label" type="text" formControlName="descripcion"
+              placeholder="{{productoEdit.descripcion}}">
+          </label>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Selecconar la categoria del producto
+            <select class="form-label" type="text" formControlName="categoria" placeholder="Ej: ...">
+              <option selected>elija una opción</option>
+              <!--ACA SE PONEN LAS CATEGORIAS QUE HAY EN EL MODULO PRODUTCO-->
+              <option value="remeras">Remeras</option>
+              <option value="buzos">Buzos</option>
+              <option value="producto">General</option>
+            </select>
+          </label>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-sucess" (click)="EditarProducto()"
+          data-bs-dismiss="modal">Guardar cambios</button>
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 
 <!-- Modal NUEVO para eliminar productos-->
 <div class="modal fade" *ngIf="modalvisibleproductos" id="eliminarProducto" tabindex="-1"
@@ -128,6 +200,7 @@
         {{productoSeleccionado.nombre}}
         <img src="{{productoSeleccionado.imagen}}" alt="{{productoSeleccionado.alt}}">
       </div>
+
 
       <!--acciones-->
       <div class="modal-footer">
