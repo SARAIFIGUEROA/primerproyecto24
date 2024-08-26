@@ -6,16 +6,32 @@ import { ProductoComponent } from './pages/producto/producto.component';
 import { BuzosComponent } from './pages/buzos/buzos.component';
 import { RemerasComponent } from './pages/remeras/remeras.component';
 
+import { CardComponent } from './components/card/card.component';
+import { CardBuzosComponent } from './components/card-buzos/card-buzos.component';
+import { AdminModule } from "../admin/admin.module";
+
+
 
 @NgModule({
   declarations: [
     ProductoComponent,
     BuzosComponent,
-    RemerasComponent
+    RemerasComponent,
+    CardComponent,
+    CardBuzosComponent
   ],
   imports: [
     CommonModule,
-    ProductoRoutingModule
+    ProductoRoutingModule,
+    AdminModule
+],
+  exports:[
+    ProductoComponent,
+    BuzosComponent,
+    RemerasComponent,
+    CardComponent,
+    CardBuzosComponent
   ]
+
 })
 export class ProductoModule { }

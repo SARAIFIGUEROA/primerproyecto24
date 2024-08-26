@@ -139,6 +139,4 @@ alert("hubo un problema al modificar un nuevo producto \n"+error)
 });
 this.producto.reset();
 }
-
-
 }
