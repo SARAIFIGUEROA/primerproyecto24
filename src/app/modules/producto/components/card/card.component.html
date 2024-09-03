@@ -1,18 +1,35 @@
-<!--card para mostrar todos los productos que el admin ingrese a la base de datos-->
-<div class="container" *ngFor="let producto of coleccionProductos">
-    <div class="card" style="width: 18rem;">
-        <img src="{{producto.imagen}}" class="card-img-top" alt="{{producto.alt}}">
+<!--Espacio para mostrar la informacion de input
+- notificacion de que se agrego un producto-->
+<div class="row">
+    <div class="col">
+        <div class="col-lg-12" *ngIf="compraVisibole">
+            <!--card para mostrar todos los productos que el admin ingrese a la base de datos-->
+            <div class="container" *ngFor="let producto of coleccionProductos">
+                <div class="card" style="width: 18rem;">
+                    <img src="{{producto.imagen}}" class="card-img-top" alt="{{producto.alt}}">
+            
+                    <div class="card-body">
+                        <h5 class="card-title">{{producto.imagen}}</h5>
+                        <p class="card-text">{{producto.precio}}</p>
+            
+            
+                        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#verMas"
+                            (click)="mostrarVer(producto)">Ver más</button>
+                    </div>
+                </div>
+            </div>
 
-        <div class="card-body">
-            <h5 class="card-title">{{producto.imagen}}</h5>
-            <p class="card-text">{{producto.precio}}</p>
-
-
-            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#verMas"
-                (click)="mostrarVer(producto)">Ver más</button>
+            <div class="col-lg-4"></div>
+            <div class="card text-bg-info mb-3">
+                <ul class="list-group">
+                    <h3>Ultima compra:</h3>
+                    <li class="list-group-item">{{productoReciente}}</li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>
+
 
 <!--modal nuevo para ver mas info-->
 
@@ -33,10 +50,10 @@
             <div class="mb-3">{{productoseleCcionado.precio}}</div>
 
 
-        <div class="modal-footer">
-            <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Agregar al carrito</button>
-            <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cerrar</button>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal" (click)="AgregarProducto(productoseleCcionado)">Agregar</button>
+                <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
         </div>
     </div>
-</div>
 </div>

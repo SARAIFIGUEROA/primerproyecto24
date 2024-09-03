@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Producto } from 'src/app/models/producto';
 import { CrudService } from 'src/app/modules/admin/services/crud.service';
+
+//importaciones para com unicarnos con el compnente padre
+
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
@@ -14,6 +17,15 @@ coleccionProductos : Producto[] = [];
 productoseleCcionado!: Producto;
 //variable local para arreglar 
 modalVisible: boolean = false;
+
+//boolean para el ngif
+compraVisibole: boolean = false
+
+//directivas para comunicarse con el componente padre
+//llamamos la variable "productoreciente"
+@Input ()productoReciente:string = '';
+//evenemitter nuevo evento de tipo producto, trae un producto, es un evento que registra 
+@Output() productoagregado= new EventEmitter<Producto>();
 
 constructor (public servicioCrud: CrudService){
 
@@ -32,6 +44,12 @@ mostrarVer(info: Producto){
   this.productoseleCcionado=info;
 }
 
-
-
+//creamos la funcion agregar producto
+//recibe informacion respetando la interfaz de producto
+AgregarProducto(info:Producto){
+  //llmamos a ouput y emitimos la nueva informacion del producto que agregamos
+  this.productoagregado.emit(info);
+//NG IF
+  this.compraVisibole = true
+}
 }
