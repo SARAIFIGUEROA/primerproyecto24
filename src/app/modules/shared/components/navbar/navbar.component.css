@@ -2,29 +2,80 @@
   flex: 1 1 auto;
 }
 
-/*este mediaqueri va a corresponder a pantallas mas pequeñas como celulares, ipads*/
-@media(min-with:300px)and (max-with:700px) {
-  mat-toolbar {
-    background-color: blue;
-  }
+/*contenido general*/
+.navbar {
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; /* Distribuye el espacio entre los elementos */
+  padding: 0 16px; /* Espacio interno*/
+  position: relative; /*posicionamiento de los elementos internos */
+}
 
-  #menuProducto {
-    display: none;
-  }
+/* Contenedor para centrar el botón */
+.navbar-center {
+  position: absolute; /* Posiciona el contenedor de forma absoluta */
+  left: 50%; /* Posiciona el contenedor en el centro */
+  transform: translateX(-50%); /* Ajusta el contenedor al centro */
+  
+}
 
-  #menuInicio {
-    display: none;
+.productosgrande { 
+  font-family: "Kosugi", sans-serif;}
+
+/*logo imagen*/
+.logo img{
+  height: 40px;
+  width: auto;
+}
+
+/*Google fonts*/
+.achedos{ 
+  font-size: 32px;
+  color: black;
+  font-family: "New Amsterdam", sans-serif;
+  margin-left: 6px; } 
+
+/* CORRESPONDEN A PANTALLAS MÁS PEQUEÑAS -> ej.: celulares */
+@media (min-width: 300px) and (max-width: 700px){
+  mat-toolbar{
+      background-color: rgb(179, 240, 144);
+  }
+  #menuProducto{
+      display: none;
   }
 }
 
-/*corresponde a pantallas mas grandes*/
-@media(min-with:700px) {
-  mat-toolbar {
-    background-color: cadetblue;
+/* ENCAPSULA ESTILOS PARA PANTALLAS MÁS GRANDES -> ej.: computadora, televisor */
+@media (min-width: 700px){
+  mat-toolbar{
+      background-color: rgb(136, 218, 156);
   }
 
-  #menuSecciones {
-    /**/
-    display: none;
+  #menuSecciones{
+      display: none;
   }
+}
+
+/*Lista izzq y derecha en las categorias*/
+
+/* Contenedor del menú */
+.menu-container {
+  display: flex; /* Usa flexbox para el diseño */
+  justify-content: space-between; /* Distribuye el espacio entre las listas */
+}
+
+/* Estilos para cada lista de productos */
+.menu-list {
+  display: flex;
+  flex-direction: column; /* Coloca los productos en una columna */
+}
+
+/* Opcional: Añadir un poco de espaciado entre los elementos de la lista */
+.menu-list button {
+  margin-bottom: 8px; /* Espaciado entre los botones */
+}
+
+/* Opcional: Añadir un poco de estilo al menú */
+mat-menu {
+  width: 400px; /* Ajusta el ancho del menú según sea necesario */
 }

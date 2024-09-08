@@ -1,52 +1,54 @@
-<!--navbar-->
-<!--menu desplegable para pantalla pequeña-->
-<mat-toolbar>
-    <button mat-icon-button class="example-icon" id="menuSeciones" [matMenuTriggerFor]="seccion">
-      <mat-icon>menu</mat-icon>
-    </button>
-<mat-menu #seccion="matMenu">
-  <!--deja de ser mat button y ahora oasa a ser un mat menu item-->
-  <button mat-menu-item routerLink="/inicio">inicio</button>
-  <button mat-menu-item [matMenuTriggerFor]="producto">Productos</button>
-</mat-menu>
+<mat-toolbar class="navbar">
+  <!-- Menú desplegable para cuando la pantalla sea menor a 700px, mas pequeña-->
+  <button id="menuSecciones" mat-icon-button class="example-icon" [matMenuTriggerFor]="seccion">
+    <mat-icon>menu</mat-icon>
+  </button>
 
-    <span>My app</span>
-    <span class="example-spacer"></span>
-    <!--se va a mostrar cuansdo la pantalla sea mayor a 700px-->
-    <button mat-button routerLink="/inicio">inicio</button>
-    <button mat-button [matMenuTriggerFor]="producto">Productos</button>
-   
-    <!--Menu desplegable para manejar todo el acceso de los usuarios a la pagina-->
+  <mat-menu #seccion="matMenu">
+    <button mat-menu-item [matMenuTriggerFor]="producto">Productos</button>
+  </mat-menu>
 
+
+  <h2 class="achedos" id="menuInicio" routerLink="/inicio">My app</h2>
+<!-- Se van a mostrar cuando la pantalla sea mayor a 700px --> 
+  <!-- Menu desplegable pantalla grande en el centro -> PRODUCTOS -->
+   <div class="navbar-center">
+  <button id="menuProducto" mat-button [matMenuTriggerFor]="producto" class="productosgrande">PRODUCTOS</button>
+</div>
+
+<!--Lista izquierda-->
 <mat-menu #producto="matMenu">
-  <button mat-menu-item routerLink="/producto">General</button>
-  <button mat-menu-item routerLink="/buzos">buzos</button>
-  <button mat-menu-item routerLink="/remeras">remeras</button>
-
+  <div class="menu-container">
+    <div class="menu-list left-list">
+      <button mat-menu-item routerLink="/producto">General</button>
+      <button mat-menu-item routerLink="/buzos">buzos</button>
+      <button mat-menu-item routerLink="/remeras">remeras</button>
+    </div>
+    <!--lista derecha-->
+    <div class="menu-list right-list">
+      <button mat-menu-item routerLink="/producto">General</button>
+    <button mat-menu-item routerLink="/buzos">buzos</button>
+    <button mat-menu-item routerLink="/remeras">remeras</button>
+    </div>
+  </div>
 </mat-menu>
 
-<!--Carrito-->
-<span class="example-spacer"></span>
-<!--Inicio de sesion y registro de un nuevo usuario-->
-<button mat-button [matMenuTriggerFor]="usuario"><mat-icon>person</mat-icon></button>
-<mat-menu #usuario="matMenu">
-  <button mat-menu-item (click)="ingresar()" *ngIf="logueado" routerLink="/registro">Registrarse</button>
-  <button mat-menu-item (click)="ingresar()" *ngIf="logueado" routerLink="/iniciodesesion">Iniciar sesión</button> 
-  <button mat-menu-item (click)="cerrarsesion()" *ngIf="deslogueado">Cerrar sesion</button>
-</mat-menu>
+  <span class="example-spacer"></span>
 
-    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-      <mat-icon>shopping_cart</mat-icon>
-    </button>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-      <mat-icon>share</mat-icon>
-    </button>
+  <!-- Menú desplegable para manejar todo el acceso de los usuarios en la página -->
+  <button mat-icon-button [matMenuTriggerFor]="usuario"><mat-icon>person</mat-icon></button>
+  <mat-menu #usuario="matMenu">
+    <button mat-menu-item (click)="ingresar()" *ngIf="logueado" routerLink="/registro">Registrarse</button>
+    <button mat-menu-item (click)="ingresar()" *ngIf="logueado" routerLink="/inicio-sesion">Iniciar Sesión</button>
+    <button mat-menu-item (click)="cerrarsesion()" *ngIf="deslogueado">Cerrar Sesión</button>
+  </mat-menu>
 
+  <!-- Carrito -->
+  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <mat-icon>shopping_cart</mat-icon>
+  </button>
+  <!--Label Para Modo Oscuro-->
+  <label for="toggle" id="label_toggle"><i class="fa-solid fa-moon"></i></label>
+  <input type="checkbox" id="toggle" (click)="cambiarFondo()">
 
-    <!--Label para modo oscuro-->
-<label for="toggle" id="label_toggle"><i class="fa-solid fa-moon"></i></label>
-<!--Chequeamos en que modo esta el modo oscuro-->
-<input type="checkbox" id="toggle" (click)="cambiarFondo()">
-
-  </mat-toolbar>
-  
+</mat-toolbar>
