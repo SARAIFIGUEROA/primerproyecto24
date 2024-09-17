@@ -32,7 +32,7 @@ export class TableComponent {
     precio: new FormControl(0, Validators.required),
     descripcion: new FormControl('', Validators.required),
     categoria: new FormControl('', Validators.required),
-    imagen: new FormControl('', Validators.required),
+    // imagen: new FormControl('', Validators.required),
     alt: new FormControl('', Validators.required),
   })
 
@@ -89,8 +89,8 @@ export class TableComponent {
   //creamos metodo caragr img
   cargarImg(event: any) {
     //variable para obtener el archivo subido desde el input del html
-    let archivo = event.target.files[0]; 
-//
+    let archivo = event.target.files[0];
+    //creamos objeto wue el archivo file pueda leerlo
     let reader = new FileReader();
     if (archivo != undefined) {
       reader.readAsDataURL(archivo);
@@ -104,13 +104,7 @@ export class TableComponent {
       }
     }
   }
-
-
-
-
-
-  //vinculamos con el modal
-
+  //vinculamos con el modal del html
   MostrarBorrar(productoSeleccionado: Producto) {
     this.modalvisibleproductos = true;
     this.productoSeleccionado = productoSeleccionado;
@@ -118,7 +112,8 @@ export class TableComponent {
 
 
   borrarProducto() {
-    this.serviciocrud.eliminarProducto(this.productoSeleccionado.idproducto)
+    //enviamos el id del producto para identificarlo en la bd y la url de la imagen va a servir para eliminar desde alamcenamiento storage
+    this.serviciocrud.eliminarProducto(this.productoSeleccionado.idproducto, this.productoSeleccionado.imagen,)
       .then(respuesta => {
         alert("Se ha podido eliminar con éxito.");
       })
@@ -140,7 +135,7 @@ export class TableComponent {
       precio: productoSeleccionado.precio,
       descripcion: productoSeleccionado.descripcion,
       categoria: productoSeleccionado.categoria,
-      imagen: productoSeleccionado.imagen,
+      //  imagen: productoSeleccionado.imagen,
       alt: productoSeleccionado.alt,
     })
   }
@@ -157,20 +152,40 @@ export class TableComponent {
       precio: this.producto.value.precio!,
       descripcion: this.producto.value.descripcion!,
       categoria: this.producto.value.categoria!,
-      imagen: this.producto.value.imagen!,
+      imagen: this.productoSeleccionado.imagen,
       alt: this.producto.value.alt!,
 
     }
-    //accedemos al servivio crud
-    this.serviciocrud.editarProducto(this.productoSeleccionado.idproducto, datos)
-      .then(producto => {
-        alert("el producto se ha modificado con exito")
-        this.producto.reset();
-      })
 
-      .catch(error => {
-        alert("hubo un problema al modificar un nuevo producto \n" + error)
-      });
-    this.producto.reset();
-  }
+if(this.urlimg){
+  this.serviciocrud.subirImagen(this.nombreurlimg, this.urlimg, "producto")
+  .then(resp => {
+    this.serviciocrud.obtenerurlimg(resp)
+    .then(url => {
+      datos.imagen = url; //actualizamos la imagen en los datos del formulario
+
+      this.actualizarproducto(datos); //actuaolizamos los datos
+      this.producto.reset(); //vaciamos cdasiolleros del formulrio 
+    })
+    .catch(error => {
+    alert("hubo un problema al subir la imagen \n" + error);
+  })
+  })
 }
+}
+
+actualizarproducto(datos:Producto){
+   //enviamos metodo el id del producto 
+   this.serviciocrud.editarProducto(this.productoSeleccionado.idproducto, datos)
+   .then(producto => {
+     alert("el producto se ha modificado con exito")
+     this.producto.reset();
+   })
+
+   .catch(error => {
+     alert("hubo un problema al modificar un nuevo producto \n" + error)
+   });
+ this.producto.reset();
+}
+}
+

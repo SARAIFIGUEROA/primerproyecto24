@@ -9,7 +9,7 @@
       <th scope="col">Descripcion</th>
       <th scope="col">Categoria</th>
       <th scope="col">Acciones</th>
-      <th scope="col">Acciones</th> 
+      <th scope="col">Acciones</th>
     </tr>
   </thead>
 
@@ -27,7 +27,8 @@
 
       <!--acciones-->
       <td>
-        <button id="btn edit" title="Editar" type="button" class="btn btn-outlinr-warning" data-bs-toggle="modal" data-bs-target="#EditarProducto" (click)="Mostrareditar(producto)">
+        <button id="btn edit" title="Editar" type="button" class="btn btn-outlinr-warning" data-bs-toggle="modal"
+          data-bs-target="#EditarProducto" (click)="Mostrareditar(producto)">
           <mat-icon>edit</mat-icon>
         </button>
       </td>
@@ -52,7 +53,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        
+
         <h1 class="modal-title fs-5" id="exampleModalLabel">Ingrese un nuevo producto</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
@@ -68,10 +69,11 @@
         </div>
         <!--imagen-->
         <div class="mb-3">
-          <label class="form-label">Suba url de imagen
-            <input class="form-label" type="text" formControlName="imagen"
-              placeholder="adjunte el link de la imagen aqui">
-          </label>
+          <label class="form-label">Suba url de imagen</label>
+          <!-- <input class="form-label" type="text" formControlName="imagen"
+              placeholder="adjunte el link de la imagen aqui">-->
+              <!--tipo archivo, accept img acepota todo tio d extensiones png, jpg, jpeg, gif, evento chamge va a ejecutyar el metodo cargar im que definimos en el table.ts -->
+          <input type="file" accept="imagen/*" (change)="cargarImg($event)">  
         </div>
 
         <div class="mb-3">
@@ -117,11 +119,12 @@
 </div>
 
 <!-- Modal para editar produto -->
-<div class="modal fade" id="EditarProducto" *ngFor="let productoEdit of coleccionproductos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="EditarProducto" *ngFor="let productoEdit of coleccionproductos" tabindex="-1"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        
+
         <h1 class="modal-title fs-5" id="exampleModalLabel">Edite el siguiente producto</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
@@ -137,16 +140,14 @@
         </div>
         <!--imagen-->
         <div class="mb-3">
-          <label class="form-label">Suba url de imagen
-            <input class="form-label" type="text" formControlName="imagen"
-              placeholder="{{productoEdit.imagen}}">
-          </label>
+          <label class="form-label">Suba url de imagen </label>
+            <input type="file" accept="imagen/*" (change)="cargarImg($event)">
+         
         </div>
 
         <div class="mb-3">
           <label class="form-label">Suba Atl (la descripcion de imagen)
-            <input class="form-label" type="text" formControlName="alt"
-              placeholder="{{productoEdit.alt}}">
+            <input class="form-label" type="text" formControlName="alt" placeholder="{{productoEdit.alt}}">
           </label>
         </div>
 
@@ -177,8 +178,8 @@
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-outline-sucess" (click)="EditarProducto()"
-          data-bs-dismiss="modal">Guardar cambios</button>
+        <button type="button" class="btn btn-outline-sucess" (click)="EditarProducto()" data-bs-dismiss="modal">Guardar
+          cambios</button>
         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
       </div>
     </div>
