@@ -1,5 +1,6 @@
 <!--tabla bd-->
-<table class="table">
+
+<table class="table table tabla1 ">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -12,6 +13,7 @@
       <th scope="col">Acciones</th>
     </tr>
   </thead>
+
 
   <tbody>
     <tr *ngFor="let producto of coleccionproductos">
@@ -29,19 +31,20 @@
       <td>
         <button id="btn edit" title="Editar" type="button" class="btn btn-outlinr-warning" data-bs-toggle="modal"
           data-bs-target="#EditarProducto" (click)="Mostrareditar(producto)">
-          <mat-icon>edit</mat-icon>
+          <mat-icon class="iconos">edit</mat-icon>
         </button>
       </td>
 
       <td>
         <button id="btn-delete" title="Eliminar" type="button" class="btn btn-outlinr-danger" data-bs-toggle="modal"
           data-bs-target="#eliminarProducto" (click)="MostrarBorrar(producto)">
-          <mat-icon>delete</mat-icon>
+          <mat-icon class="iconos1">delete</mat-icon>
         </button>
       </td>
     </tr>
   </tbody>
 </table>
+
 
 <!-- Boton agregar nuevos productos -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#AgregarProducto">

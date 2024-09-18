@@ -1,0 +1,21 @@
+  
+.tabla1{
+      background-color: rgb(75, 117, 142); /* Color de fondo */
+    color: #ffffff; /* Color del texto */
+  }
+  
+  .tabla1 th {
+    background-color: rgb(75, 117, 142); /* Color de fondo para los encabezados */
+    color: white; /* Color del texto para los encabezados */
+  }
+  
+  .tabla1 td {
+    background-color: rgb(75, 117, 142);  /* Color de fondo para las celdas */
+  }
+  
+  .iconos{
+color:  #ffffff;
+  }
+  .iconos1{
+    color: rgb(238, 100, 69);
+}

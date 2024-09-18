@@ -29,11 +29,9 @@ export class CrudService {
 
 
 
-
   constructor(private database: AngularFirestore) {
     this.productosCollection = database.collection('producto');
   }
-
   // crear,
   crearproducto(producto: Producto, url: string) {
     return new Promise(async (resolve, reject) => {
@@ -113,14 +111,15 @@ export class CrudService {
    */
 
   //subir imagenes con sus referencias
-  async subirImagen(nombre: string,
+  async subirImagen(
+    nombre: string,
     imagen: any,
     ruta: string,) {
     try {
       //accede a Storage (almacenamiento), ruta (crapeta) / nom re (nombre de la imagen)
       let referenciadeimg = ref(this.storage, ruta + '/' + nombre);
       //asignamos a la respuesta la informacion de las oimagenes subidas
-      this.respuesta = await uploadString(referenciadeimg, nombre, 'data_url')
+      this.respuesta = await uploadString(referenciadeimg, imagen, 'data_url')
         .then(resp => {
           return resp;
         })
