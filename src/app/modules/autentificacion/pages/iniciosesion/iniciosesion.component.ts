@@ -9,6 +9,9 @@ import { Router } from '@angular/router';
 import * as CryptoJS from 'crypto-js';
 //iimportamos sweet alert
 import Swal from 'sweetalert2';
+import { throwToolbarMixedModesError } from '@angular/material/toolbar';
+import { isFormGroup } from '@angular/forms';
+import { ContentObserver } from '@angular/cdk/observers';
 
 @Component({
   selector: 'app-iniciosesion',
@@ -118,8 +121,18 @@ export class IniciosesionComponent {
             title: "Bien!",
             text: "Se inicio sesion con exito!",
             icon: "success"
-          });
-          this.servicioRutas.navigate(['./inicio']);
+          })
+          //almacenamos y envaimos por paramnetro el rol de los dtaos de usuario obtenido
+          this.servicioAuth.setusuarioRol(usuariodata.rol);
+
+          if (usuariodata.rol === 'admin') {
+            console.log("inicio de administrador");
+            this.servicioRutas.navigate(['./admin'])
+          } else {
+            console.log("inicio de usuario visitante");
+            this.servicioRutas.navigate(['./inicio']);
+
+          }
         })
         .catch(err => {
           Swal.fire({
@@ -135,7 +148,7 @@ export class IniciosesionComponent {
     }
   }
 
-  
+
   /* for (let i = 0; i < this.colleccioniniciolocal.length; i++) {
      const usuariolocal = this.colleccioniniciolocal[i];
      if (usuariolocal.nombre === credenciales.nombre && usuariolocal.apellido === credenciales.apellido && usuariolocal.email === credenciales.email &&

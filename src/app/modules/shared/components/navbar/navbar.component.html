@@ -6,6 +6,7 @@
 
   <mat-menu #seccion="matMenu">
     <button mat-menu-item [matMenuTriggerFor]="producto">Productos</button>
+    <button mat-menu-item routerLink="/admin">admin</button>
   </mat-menu>
 
 
@@ -32,6 +33,8 @@
     </div>
   </div>
 </mat-menu>
+
+<button id="menuAdmin" mat-button routerLink="/admin">admin</button>
 
   <span class="example-spacer"></span>
 
