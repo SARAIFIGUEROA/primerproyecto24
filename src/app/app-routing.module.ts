@@ -23,6 +23,7 @@ const routes: Routes = [
   {
     path: "", loadChildren:()=> import('./modules/shared/shared.module').then(m => m.SharedModule)
   },
+  
   {//modificamos el path de admin con el guardian
     path:"", loadChildren:()=>import('./modules/admin/admin.module').then(m=>m.AdminModule),
     canActivate:[rutaProtegidaGuard], data:{role: 'admin'}
