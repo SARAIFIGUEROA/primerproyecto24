@@ -4,7 +4,7 @@ import { IniciosesionComponent } from './pages/iniciosesion/iniciosesion.compone
 import { RegistroComponent } from './pages/registro/registro.component';
 
 const routes: Routes = [
-  {path:"iniciodesesion", component:IniciosesionComponent},
+  {path:"iniciosesion", component:IniciosesionComponent},
   {path:"registro", component:RegistroComponent},
 ];
 

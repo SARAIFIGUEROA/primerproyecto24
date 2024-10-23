@@ -5,20 +5,18 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 //itera coleccion leyendo la info actual
 import { map } from 'rxjs';
-import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
-
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 //
-  private rolUsuario:string | null =null;
+  private rolUsuario:string | null = null;
 
   //referenciamos uuth de firebase en el servicio y serviciofirestore
   constructor(
    private auth: AngularFireAuth,
-    private serviciofirestore: AngularFirestore,) { }
+   private serviciofirestore: AngularFirestore) { }
 
   //funcion para registro
   registro(email: string, password: string) {
@@ -47,14 +45,13 @@ export class AuthService {
   }
 //retornamos del servicio firestore la cllecccion de usuarios, buscamos una refereencia en los email reguistrados y los comprarmaos con los ingrese el usuario al iniciar sesion y los obtiene con el .get, lo vuelve una promesa => da un resultado resuelto o rechazado
   obtenerusuario(email: string) {
-    return this.serviciofirestore.collection('usuarios', ref => ref.where('email', '==', email)).get().toPromise()
+    return this.serviciofirestore.collection('usuarios', ref => ref.where('email', '==', email)).get().toPromise();
   }
-
-
 //funcion para obtener el rol de usuario
 obtenerRol(uid: string): Observable<string | null>{
 //accedemos a la coleccion nusuarios, buscado por uid, obteniendo cambios en valores, al enviar info, por tuberia (ppipe), mapeamos la coleccion, obtenemos usuario especifico y buscamos su atributo "rol", aun si es Nulo
-return this.serviciofirestore.collection("usuarios").doc(uid).valueChanges().pipe(map((usuario: any)=> usuario ? usuario.rol:null));
+return this.serviciofirestore.collection("usuarios").doc(uid).valueChanges()
+.pipe(map((usuario: any)=> usuario ? usuario.rol: null));
 }
 //enviamos elrol obtenido
 setusuarioRol(rol:string){
@@ -64,5 +61,4 @@ this.rolUsuario = rol;
 getusuarioRol(): string | null{
 return this.rolUsuario;
 }
-
 }

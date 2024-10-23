@@ -1,0 +1,8 @@
+/* Tamaño ítem carrusel */
+.item-carrusel{
+    width: 20rem;
+}
+
+.carousel-control-prev-icon,.carousel-control-next-icon{
+    filter: invert(19%) sepia(42%) saturate(637%) hue-rotate(187deg) brightness(93%) contrast(89%);
+}

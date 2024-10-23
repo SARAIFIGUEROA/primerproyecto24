@@ -8,7 +8,7 @@ import { RemerasComponent } from './pages/remeras/remeras.component';
 
 import { CardComponent } from './components/card/card.component';
 import { CardBuzosComponent } from './components/card-buzos/card-buzos.component';
-import { AdminModule } from "../admin/admin.module";
+import { CarruselComponent } from './components/carrusel/carrusel.component'
 
 
 
@@ -18,12 +18,14 @@ import { AdminModule } from "../admin/admin.module";
     BuzosComponent,
     RemerasComponent,
     CardComponent,
-    CardBuzosComponent
+    CardBuzosComponent,
+    CarruselComponent,
   ],
+
   imports: [
     CommonModule,
     ProductoRoutingModule,
-    AdminModule
+  
 ],
   exports:[
     ProductoComponent,

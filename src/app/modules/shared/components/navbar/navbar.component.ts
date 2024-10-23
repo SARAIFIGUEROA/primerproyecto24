@@ -20,8 +20,8 @@ export class NavbarComponent {
     this.deslogueado = true;
   }
   cerrarsesion() {
-    this.logueado = false;
-    this.deslogueado = true;
+    this.logueado = true;
+    this.deslogueado = false;
 
     this.servicioauth.cerrarsesion();
     this.servicioderutas.navigate(["./"]);

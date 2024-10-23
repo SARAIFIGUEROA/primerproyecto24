@@ -6,7 +6,6 @@ import { AuthService } from '../../services/auth.service';
 import { FirestoreService } from 'src/app/modules/shared/firestore.service';
 //importamos componentes de rutas de angular
 import { Router } from '@angular/router';
-import { throwToolbarMixedModesError } from '@angular/material/toolbar';
 
 //crypto
 import * as CryptoJS from 'crypto-js';
@@ -75,17 +74,15 @@ export class RegistroComponent {
         });
       });
 //constante uid captura el identificado de la base de datos
-      const uid= await this.servicioAuth.tomaruid();
+const uid= await this.servicioAuth.tomaruid();
 //se le asigna al atributo de la interfaz 
 this.usuarios.uid=uid;
 //ES UN ALGORITMO de hash seguro que toma una entrada (EN ESTE CASO LA CONTRASEÑA) Y PRODUCE UNA CADENA DE CARACTERES HEXADECIMNAL QUE VA A REPRESENTAR A SU HASH
 this.usuarios.password = CryptoJS.SHA256(this.usuarios.password).toString();
 //el to string va a convertir el resultado en la cadena de caracteres leghle
 this.guardarusuario();
-
-    /*
     //enviamos la informacion como uvo objeto a la coleccion
-    this.coleccionUsuarios.push(credenciales);
+   // this.coleccionUsuarios.push(credenciales);
     //llamamos la funcion para ejecutarla*/
 
     this.limpiarinputs();
@@ -106,17 +103,19 @@ this.guardarusuario();
       })
     }
 
-  //funcion para vaciar inputs
-  limpiarinputs() {
-    //en constante input llamamos atributos y los inicializamos
-    const input = {
-      uid: this.usuarios.uid = '',
-      nombre: this.usuarios.nombre = '',
-      apellido: this.usuarios.apellido = '',
-      email: this.usuarios.email = '',
-      rol: this.usuarios.rol = 'vis',
-      password: this.usuarios.password = '',
-
-    }
+ // Función para vaciar los inputs del formulario
+ limpiarinputs(){
+  /*
+  En constante "inputs" llamamos a los atributos y los inicializamos 
+  como vacíos (string = '', number = 0)
+  */
+  const inputs = {
+    uid: this.usuarios.uid = '',
+    nombre: this.usuarios.nombre = '',
+    apellido: this.usuarios.apellido = '',
+    email: this.usuarios.email = '',
+    rol: this.usuarios.rol = 'vis',
+    password: this.usuarios.password = ''
   }
+}
 }

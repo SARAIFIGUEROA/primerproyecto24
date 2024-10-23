@@ -34,6 +34,5 @@ export const rutaProtegidaGuard: CanActivateFn = (route, state) => {
         return of(servicioRutas.createUrlTree(['/inicio']));
       }
     })
-  )
-   
+  )                        
 };
