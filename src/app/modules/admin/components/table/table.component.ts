@@ -34,6 +34,7 @@ export class TableComponent {
     categoria: new FormControl('', Validators.required),
     // imagen: new FormControl('', Validators.required),
     alt: new FormControl('', Validators.required),
+    stock: new FormControl(0, Validators.required),
   })
 
   constructor(public serviciocrud: CrudService) { }
@@ -55,6 +56,7 @@ export class TableComponent {
         categoria: this.producto.value.categoria!,
         imagen: '',
         alt: this.producto.value.alt!,
+        stock: this.producto.value.stock!,
       }
       //enviamos nombrey url de imagenes y definimjos carpeta de imagenes como "produtcos"
       await this.serviciocrud.subirImagen(this.nombreurlimg, this.urlimg, "productos")
@@ -137,6 +139,7 @@ export class TableComponent {
       categoria: productoSeleccionado.categoria,
       //  imagen: productoSeleccionado.imagen,
       alt: productoSeleccionado.alt,
+      stock: productoSeleccionado.stock,
     })
   }
 
@@ -154,38 +157,38 @@ export class TableComponent {
       categoria: this.producto.value.categoria!,
       imagen: this.productoSeleccionado.imagen,
       alt: this.producto.value.alt!,
-
+      stock: this.producto.value.stock!,
     }
 
-if(this.urlimg){
-  this.serviciocrud.subirImagen(this.nombreurlimg, this.urlimg, "producto")
-  .then(resp => {
-    this.serviciocrud.obtenerurlimg(resp)
-    .then(url => {
-      datos.imagen = url; //actualizamos la imagen en los datos del formulario
+    if (this.urlimg) {
+      this.serviciocrud.subirImagen(this.nombreurlimg, this.urlimg, "producto")
+        .then(resp => {
+          this.serviciocrud.obtenerurlimg(resp)
+            .then(url => {
+              datos.imagen = url; //actualizamos la imagen en los datos del formulario
 
-      this.actualizarproducto(datos); //actuaolizamos los datos
-      this.producto.reset(); //vaciamos cdasiolleros del formulrio 
-    })
-    .catch(error => {
-    alert("hubo un problema al subir la imagen \n" + error);
-  })
-  })
-}
-}
+              this.actualizarproducto(datos); //actuaolizamos los datos
+              this.producto.reset(); //vaciamos cdasiolleros del formulrio 
+            })
+            .catch(error => {
+              alert("hubo un problema al subir la imagen \n" + error);
+            })
+        })
+    }
+  }
 
-actualizarproducto(datos:Producto){
-   //enviamos metodo el id del producto 
-   this.serviciocrud.editarProducto(this.productoSeleccionado.idproducto, datos)
-   .then(producto => {
-     alert("el producto se ha modificado con exito")
-     this.producto.reset();
-   })
+  actualizarproducto(datos: Producto) {
+    //enviamos metodo el id del producto 
+    this.serviciocrud.editarProducto(this.productoSeleccionado.idproducto, datos)
+      .then(producto => {
+        alert("el producto se ha modificado con exito")
+        this.producto.reset();
+      })
 
-   .catch(error => {
-     alert("hubo un problema al modificar un nuevo producto \n" + error)
-   });
- this.producto.reset();
-}
+      .catch(error => {
+        alert("hubo un problema al modificar un nuevo producto \n" + error)
+      });
+    this.producto.reset();
+  }
 }
 

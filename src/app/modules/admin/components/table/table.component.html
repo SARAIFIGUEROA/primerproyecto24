@@ -11,6 +11,7 @@
       <th scope="col">Categoria</th>
       <th scope="col">Acciones</th>
       <th scope="col">Acciones</th>
+      <th scope="col">Stock</th>
     </tr>
   </thead>
 
@@ -25,7 +26,7 @@
       <td>{{producto.precio}}</td>
       <td>{{producto.descripcion}}</td>
       <td>{{producto.categoria}}</td>
-
+      <td>{{producto.stock}}</td>
 
       <!--acciones-->
       <td>
@@ -84,6 +85,12 @@
             <input class="form-label" type="text" formControlName="alt"
               placeholder="En caso de que no cargue la imagen saldra el texto que escriba aquí">
           </label>
+        </div>
+
+        <!--completar bien-->
+        <div>
+          <label class="form-label">ingrese stock</label>
+          <input type="number" class="form-control" FormControlName="Stock" placeholder="ejm 23">
         </div>
 
         <div class="mb-3">
@@ -151,6 +158,12 @@
         <div class="mb-3">
           <label class="form-label">Suba Atl (la descripcion de imagen)
             <input class="form-label" type="text" formControlName="alt" placeholder="{{productoEdit.alt}}">
+          </label>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Ingrese stock
+            <input class="form-label" type="number" formControlName="stock" placeholder="{{productoEdit.stock}}">
           </label>
         </div>
 

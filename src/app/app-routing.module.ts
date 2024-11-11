@@ -5,6 +5,7 @@ import { Inicio1Component } from './modules/inicio/pages/inicio1/inicio1.compone
 import { rutaProtegidaGuard } from './guards/ruta-protegida.guard';
 import { AdminComponent } from './modules/admin/pages/admin/admin.component';
 
+
 //RUTAs INICIALes PRINCIPAL
 
 const routes: Routes = [

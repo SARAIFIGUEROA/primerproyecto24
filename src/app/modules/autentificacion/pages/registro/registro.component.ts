@@ -26,7 +26,7 @@ export class RegistroComponent {
     nombre: '',
     apellido: '',
     email: '',
-    rol: 'vis', //=>todos los usuarios al registrarse seran visitantes
+    rol: 'usuarios', //=>todos al registrarse seran usuarios
     password: '',
   }
   //Un arreglo de tipo usuario, significa que solo puede resibir valores que esten declarados en la intrerfaz usuario y de tipo array
