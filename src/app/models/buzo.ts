@@ -1,6 +1,4 @@
 
-
-
 export interface Buzo
  {
     id: string;

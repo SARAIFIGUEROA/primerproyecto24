@@ -1,0 +1,16 @@
+<div class="container">
+    <h2>carrito de compras</h2>
+    <div class="row">
+        <div class="col lg-4">
+            <ul class="list-group">
+                <!--repite cada vez que se hace un pedido-->
+                <li class="list-group-item" *ngFor="let pedido of Coleccionpedidos">
+                    {{pedido.cantidad}}   {{pedido.producto.nombre}} - {{pedido.total}}
+                    
+                    <button class="btn btn-danger" (click)="quitarpedido(pedido)">
+                        <mat-icon>delete</mat-icon></button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

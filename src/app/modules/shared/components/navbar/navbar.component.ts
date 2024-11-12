@@ -24,7 +24,7 @@ export class NavbarComponent {
     this.deslogueado = false;
 
     this.servicioauth.cerrarsesion();
-    this.servicioderutas.navigate(["./"]);
+    this.servicioderutas.navigate(["./inicio"]);
 
   }
 

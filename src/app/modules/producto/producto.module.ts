@@ -8,7 +8,9 @@ import { RemerasComponent } from './pages/remeras/remeras.component';
 
 import { CardComponent } from './components/card/card.component';
 import { CardBuzosComponent } from './components/card-buzos/card-buzos.component';
-import { CarruselComponent } from './components/carrusel/carrusel.component'
+import { CarruselComponent } from './components/carrusel/carrusel.component';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -25,9 +27,11 @@ import { CarruselComponent } from './components/carrusel/carrusel.component'
   imports: [
     CommonModule,
     ProductoRoutingModule,
-  
-],
-  exports:[
+    FormsModule,
+    ReactiveFormsModule,
+
+  ],
+  exports: [
     ProductoComponent,
     BuzosComponent,
     RemerasComponent,

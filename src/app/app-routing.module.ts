@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { Inicio1Component } from './modules/inicio/pages/inicio1/inicio1.component';
 //guardian para la vista de admin
 import { rutaProtegidaGuard } from './guards/ruta-protegida.guard';
-import { AdminComponent } from './modules/admin/pages/admin/admin.component';
+
 
 
 //RUTAs INICIALes PRINCIPAL
@@ -29,6 +29,9 @@ const routes: Routes = [
     path:"", loadChildren:()=>import('./modules/admin/admin.module').then(m=>m.AdminModule),
     canActivate:[rutaProtegidaGuard], data:{role: 'admin'}
   },
+  {
+    path:"", loadChildren:()=>import('./modules/carrito/carrito.module').then(m=>m.CarritoModule),
+  }
 
 ];
  

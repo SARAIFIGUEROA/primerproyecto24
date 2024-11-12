@@ -3,6 +3,7 @@
 <div class="row">
     <div class="col">
         <div class="col-lg-12" *ngIf="compraVisibole">
+
             <!--card para mostrar todos los productos que el admin ingrese a la base de datos-->
             <div class="container" *ngFor="let producto of coleccionProductos">
                 <div class="card" style="width: 18rem;">
@@ -48,9 +49,12 @@
             </div>
             <div class="mb-3">{{productoseleCcionado.descripcion}}</div>
             <div class="mb-3">{{productoseleCcionado.precio}}</div>
+            <!--Para ver el stock que hay-->
+            <div class="mb-3">{{productoseleCcionado.stock}}</div>
 
 
             <div class="modal-footer">
+                <input type="number" placeholder="cantidad deseada del producto" [(ngModel)]="stock">
                 <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal" (click)="AgregarProducto(productoseleCcionado)">Agregar</button>
                 <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cerrar</button>
             </div>
